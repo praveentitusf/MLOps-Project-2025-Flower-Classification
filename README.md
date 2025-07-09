@@ -1,2 +1,0 @@
-# mlopspj
-Mlops project dat
