@@ -85,7 +85,7 @@ if __name__ == "__main__":
     # -------------------------
     # Logger and Callbacks
     # -------------------------
-    #wandb_logger = WandbLogger(project='flower-classification', name='resnet18-run', log_model=True)
+    wandb_logger = WandbLogger(project='flower-classification', name='resnet18-run', log_model=True)
 
     checkpoint_cb = ModelCheckpoint(monitor='val_loss', save_top_k=1, mode='min')
     earlystop_cb = EarlyStopping(monitor='val_loss', patience=3)
@@ -104,14 +104,14 @@ if __name__ == "__main__":
     model = FlowerResNetClassifier()
 
     trainer = Trainer(
-        max_epochs=10,
+        max_epochs=1,
         accelerator='gpu',  # use 'cpu' if no GPU
         devices=1,
-        #logger=wandb_logger,
+        logger=wandb_logger,
         #profiler=profiler,
         callbacks=[checkpoint_cb, earlystop_cb]
     )
 
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
-    trainer.save_checkpoint("saved_model/latest_model_resnet18.ckpt")
+    trainer.save_checkpoint("models/latest_model_resnet18.ckpt")

@@ -9,7 +9,7 @@ import shutil
 # -------------------------------
 # Paths
 # -------------------------------
-image_dir = "data/102flowers/jpg"
+image_dir = "data/102flowers/raw_images"
 label_file = "data/labels.csv"
 output_dir = "data/102flowers/preprocessed/"
 os.makedirs(output_dir, exist_ok=True)
