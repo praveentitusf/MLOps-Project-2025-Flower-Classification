@@ -3,3 +3,7 @@ outs:
   size: 24251
   hash: md5
   path: labels.csv
+  cloud:
+    gc_storage:
+      etag: 08a19bedf1a4b78e031001
+      version_id: '1752322199473569'
