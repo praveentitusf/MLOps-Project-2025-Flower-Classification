@@ -1,0 +1,9 @@
+outs:
+- md5: 1b14fad96f44e6ac9e51c300948cddf6
+  size: 1721
+  hash: md5
+  path: flower_labels.csv
+  cloud:
+    gc_storage:
+      etag: 08cab8a0eafbc68e031001
+      version_id: '1752860933495882'

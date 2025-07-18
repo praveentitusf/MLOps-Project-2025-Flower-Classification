@@ -5,21 +5,17 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
-# Copy only dependency files first to leverage caching
+# Set working directory
+WORKDIR /app
+
+# Copy requirements file
 COPY train_requirements.txt train_requirements.txt
-COPY pyproject.toml pyproject.toml
 
-# Install dependencies
-RUN pip install -r train_requirements.txt --verbose
-RUN pip install . --no-deps --verbose
+# Copy your preprocessing/training code
+COPY src/flowerclassif/train.py src/flowerclassif/train.py
 
-# Now copy source code and data
-COPY src/ src/
-COPY data/102flowers/raw_images/ data/102flowers/raw_images/
-COPY data/labels.csv data/labels.csv
+# Install Python dependencies (including ruff)
+RUN pip install --verbose -r train_requirements.txt
 
-# Preprocess data
-RUN python src/flowerclassif/preprocess.py
-
-# Train the model
-RUN python src/flowerclassif/train.py
+# Default command to run training
+CMD ["python", "src/flowerclassif/train.py"]
