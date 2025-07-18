@@ -1,6 +1,6 @@
 fastapi
 uvicorn[standard]
-torch==2.2.2+cpu
+torch==2.7.1+cpu
 torchvision==0.17.2+cpu
 pillow
 fsspec
