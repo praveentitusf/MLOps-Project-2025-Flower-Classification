@@ -2,7 +2,7 @@
 
 # Specific CPU versions from PyTorch's index
 torch==2.2.2+cpu
-torchvision==0.17.2+cpu
+torchvision==0.22.1+cpu
 
 # The rest from PyPI
 numpy==1.26.4
