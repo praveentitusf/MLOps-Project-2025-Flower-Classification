@@ -9,6 +9,16 @@ import random
 import gcsfs
 from io import BytesIO
 
+def get_secret(secret_id: str, project_id: str) -> str:
+    client = secretmanager.SecretManagerServiceClient()
+    name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
+    response = client.access_secret_version(request={"name": name})
+    return response.payload.data.decode("UTF-8")
+
+# Usage
+secret = get_secret("secret-1", "mlopsdat")
+
+
 bucket = "mlops-storage"
 image_dir = f"gs://{bucket}/data/raw_images"
 label_file = f"gs://{bucket}/data/labels.csv"
@@ -103,4 +113,4 @@ test_labels_path = os.path.join(output_dir, "test_labels.csv")
 with fs.open(test_labels_path, 'w') as f:
     pd.DataFrame(test_label_entries, columns=["filename", "label"]).to_csv(f, index=False)
 
-print("All done! Outputs saved to GCS under:", output_dir)
+print("Train, Validation and Test splits saved to GCS under:", output_dir)

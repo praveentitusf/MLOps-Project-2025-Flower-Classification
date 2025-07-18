@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowerclassif"
+version = "0.1.0"
+description = "MLOps project for flower classification using PyTorch"
+authors = [
+  { name = "Dat", email = "your@email.com" },
+]
+
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+
+keywords = ["machine learning", "MLOps", "flower classification", "PyTorch"]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+]
+
+# Automatically pull in requirements from file
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools]
+packages = ["flowerclassif"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = {file = ["requirements_dev.txt"]}
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["I", "N", "E", "W"]
+
+[tool.coverage.run]
+omit = ["tests/*", "src/flowerclassif/__main__.py"]

@@ -1,20 +1,21 @@
-# Use official PyTorch image with CUDA support (or CPU-only if you want)
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+FROM python:3.12-slim AS base
 
-# Set working directory inside container
+# Install system dependencies
+RUN apt update && \
+    apt install --no-install-recommends -y build-essential gcc && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
-# Copy your preprocessing script and any necessary files
-COPY gc_preprocess.py ./  # Adjust filename if needed
+# Copy requirements file
+COPY preprocess_requirements.txt preprocess_requirements.txt
+ 
+# Copy your preprocessing code
+COPY src/flowerclassif/preprocess.py src/flowerclassif/preprocess.py
 
-# Install additional dependencies
-RUN apt-get update && apt-get install -y \
-    python3-pip \
-    && rm -rf /var/lib/apt/lists/*
+# Install Python dependencies (including pandas, gcsfs, etc.)
+RUN pip install -r preprocess_requirements.txt
 
-# Install Python dependencies (add more if your script needs)
-RUN pip install --no-cache-dir \
-    torchvision pandas Pillow
-
-# Command to run your preprocessing script
-CMD ["python", "preprocess.py"]
+# Set default command (adjust path and script name as needed)
+CMD ["python", "src/flowerclassif/preprocess.py"]

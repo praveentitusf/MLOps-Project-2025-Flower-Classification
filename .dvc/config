@@ -1,0 +1,6 @@
+[core]
+    remote = gc_storage
+['remote "gc_storage"']
+    url = gs://mlops-storage
+    credentialpath = /home/titusfp/mlopsproject/service_accounts/serv_key_data.json
+    version_aware = true
