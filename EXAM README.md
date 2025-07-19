@@ -288,15 +288,7 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **Reproducibility of experiments are important. Related to the last question, how did you secure that no information**
 > **is lost when running experiments and that your experiments are reproducible?**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We made use of config files. Whenever an experiment is run the following happens: ... . To reproduce an experiment*
-> *one would have to do ...*
->
-> Answer:
-
---- question 13 fill here ---
+> Answer: We ensured reproducibility of our experiments by using DVC for data versioning, logging to track experiment metrics, and Docker to maintain consistent environments. For each experiment, we version control the code and configuration with Git, track data versions with DVC, and containerize the setup using Docker. This way, anyone can reproduce results by checking out the correct Git commit, pulling the corresponding data version with DVC, and running the experiment inside the Docker container. Logging records all important metrics and parameters, allowing easy comparison and analysis of experiment outcomes.
 
 ### Question 14
 
@@ -312,8 +304,8 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > *As seen in the second image we are also tracking ... and ...*
 >
 > Answer:
+> ![wandb_runs](figures/wandb_runs.jpg)
 
---- question 14 fill here ---
 
 ### Question 15
 
