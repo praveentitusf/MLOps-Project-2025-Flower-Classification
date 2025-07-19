@@ -354,7 +354,7 @@ docker run --rm train_docker
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-![gbucket](figures/gbucket.jpg_)
+> ![gbucket](figures/gbucket.jpg)
 
 ### Question 20
 
@@ -362,7 +362,7 @@ docker run --rm train_docker
 > **stored. You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
-![artifact_repo](figures/artifact_repo.jpg)
+> ![artifact_repo](figures/artifact_repo.jpg)
 
 ### Question 21
 
@@ -441,7 +441,7 @@ docker run --rm train_docker
 | VM Manager          | €0.10    |
 | Artifact Registry   | €0.01    |
 | Cloud Run Functions | €0.00    |
-| **Total**           | €12.46    |
+| **Total**           | €12.46   |
 ```
 > Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
 
