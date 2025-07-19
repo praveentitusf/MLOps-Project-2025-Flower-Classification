@@ -169,8 +169,8 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > *experiments.*
 >
 > Answer: Project structure
-> ```
-    mlopspj/
+```
+mlopspj/
     ├── .dvc/                        <- DVC cache and metadata
     ├── .dvcignore                   <- Ignore patterns for DVC tracking
     ├── .gitignore                   <- Ignore rules for Git
@@ -207,7 +207,7 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
     │       ├── frontend.py         <- Frontend logic and interface
     │       ├── preprocess.py       <- Data preprocessing script
     │       └── train.py            <- Training script
-
+```
 ### Question 6
 
 > **Did you implement any rules for code quality and format? What about typing and documentation? Additionally,**
