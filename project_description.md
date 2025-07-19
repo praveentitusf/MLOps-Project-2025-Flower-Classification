@@ -46,4 +46,42 @@ These metrics are essential for monitoring training progress, detecting overfitt
 ## Team Members  
 - Praveen Titus Francis  
 - Dileep Vemuri  
-- Ali Najibpour Nashi 
+- Ali Najibpour Nashi
+
+```
+mlopspj/
+    ├── .dvc/                        <- DVC cache and metadata
+    ├── .dvcignore                   <- Ignore patterns for DVC tracking
+    ├── .gitignore                   <- Ignore rules for Git
+    ├── .python-version             <- Python version pin (3.12)
+    ├── backend_requirements.txt    <- Backend dependencies
+    ├── frontend_requirements.txt   <- Frontend dependencies
+    ├── preprocess_requirements.txt <- Preprocessing dependencies
+    ├── train_requirements.txt      <- Training dependencies
+    ├── pyproject.toml              <- Project configuration (likely Poetry)
+    ├── LICENSE                     <- Open-source license
+    ├── README.md                   <- Main project README
+   
+    ├── configs/                    <- Configuration files for modules or pipelines
+    
+    ├── data/                       <- Versioned data folder (tracked with DVC)
+    │   ├── .gitignore              <- Ignore file inside data/
+    │   ├── flower_labels.csv.dvc   <- DVC-tracked label data
+    │   ├── labels.csv.dvc          <- DVC-tracked label CSV
+    │   └── raw_images.dvc          <- DVC-tracked raw images
+    
+    ├── dockerfiles/                <- Dockerfiles for each module
+    │   ├── backend.dockerfile
+    │   ├── frontend.dockerfile
+    │   ├── preprocess.dockerfile
+    │   └── train.dockerfile
+    
+    ├── src/
+    │   └── flowerclassif/          <- Core source code module
+    │       ├── __init__.py         <- Makes it a Python package
+    │       ├── __pycache__/        <- Compiled Python files
+    │       ├── backend.py          <- Backend application logic
+    │       ├── frontend.py         <- Frontend logic and interface
+    │       ├── preprocess.py       <- Data preprocessing script
+    │       └── train.py            <- Training script
+```
