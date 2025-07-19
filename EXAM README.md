@@ -169,8 +169,45 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > *experiments.*
 >
 > Answer:
+> 
+> mlopspj/
+├── .dvc/                        <- DVC cache and metadata
+├── .dvcignore                   <- Ignore patterns for DVC tracking
+├── .gitignore                   <- Ignore rules for Git
+├── .python-version             <- Python version pin (3.12)
+├── .ruff_cache/                <- Ruff linter/cache directory
+├── backend_requirements.txt    <- Backend dependencies
+├── frontend_requirements.txt   <- Frontend dependencies
+├── preprocess_requirements.txt <- Preprocessing dependencies
+├── train_requirements.txt      <- Training dependencies
+├── pyproject.toml              <- Project configuration (likely Poetry)
+├── LICENSE                     <- Open-source license
+├── README.md                   <- Main project README
+├── README copy.md              <- Possibly a backup or alt version
 
---- question 5 fill here ---
+├── configs/                    <- Configuration files for modules or pipelines
+
+├── data/                       <- Versioned data folder (tracked with DVC)
+│   ├── .gitignore              <- Ignore file inside data/
+│   ├── flower_labels.csv.dvc   <- DVC-tracked label data
+│   ├── labels.csv.dvc          <- DVC-tracked label CSV
+│   └── raw_images.dvc          <- DVC-tracked raw images
+
+├── dockerfiles/                <- Dockerfiles for each module
+│   ├── backend.dockerfile
+│   ├── frontend.dockerfile
+│   ├── preprocess.dockerfile
+│   └── train.dockerfile
+
+├── src/
+│   └── flowerclassif/          <- Core source code module
+│       ├── __init__.py         <- Makes it a Python package
+│       ├── __pycache__/        <- Compiled Python files
+│       ├── backend.py          <- Backend application logic
+│       ├── frontend.py         <- Frontend logic and interface
+│       ├── preprocess.py       <- Data preprocessing script
+│       └── train.py            <- Training script
+
 
 ### Question 6
 
@@ -183,9 +220,11 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > *We used ... for linting and ... for formatting. We also used ... for typing and ... for documentation. These*
 > *concepts are important in larger projects because ... . For example, typing ...*
 >
-> Answer:
+> Answer: Yes, we implemented several rules for code quality and formatting to maintain a clean and consistent codebase. We followed PEP8 guidelines using tools like Ruff for linting and code style enforcement. Our code is modular, with separate scripts for training, preprocessing, and serving, making it easier to test and maintain.
 
---- question 6 fill here ---
+We also used type hints in our functions to improve code clarity and help with debugging and static analysis. Additionally, we included docstrings to explain the purpose and expected inputs/outputs of functions, which improves code readability and helps other developers understand the logic faster.
+
+These practices are especially important in larger projects, where multiple people work on the same codebase over time. Consistent formatting, proper typing, and clear documentation reduce confusion, prevent bugs, and make onboarding new contributors easier. They also support better tooling and automated testing, which is critical for maintaining quality as the project grows.
 
 ## Version control
 
@@ -196,60 +235,34 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 
 > **How many tests did you implement and what are they testing in your code?**
 >
-> Recommended answer length: 50-100 words.
->
-> Example:
-> *In total we have implemented X tests. Primarily we are testing ... and ... as these the most critical parts of our*
-> *application but also ... .*
->
-> Answer:
-
---- question 7 fill here ---
+> Answer: Currently, all testing has been done manually. We have carefully tested the main functionalities, including data preprocessing, model training, and serving, to ensure everything works as expected. Manual testing helped us identify and fix issues during development, focusing on correctness and performance.
 
 ### Question 8
 
 > **What is the total code coverage (in percentage) of your code? If your code had a code coverage of 100% (or close**
 > **to), would you still trust it to be error free? Explain you reasoning.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
-> *code and even if we were then...*
->
-> Answer:
+> Answer: Since we relied on manual testing rather than automated tests, we don’t have a measurable code coverage percentage. Manual testing allowed us to verify key functionalities and expected behaviors through hands-on exploration.
 
---- question 8 fill here ---
+Even if we had automated tests with 100% coverage, that alone wouldn’t guarantee the code is completely error-free. Code coverage only shows which parts of the code were executed during testing, but it doesn’t ensure all edge cases are tested or that outputs are always correct.
 
 ### Question 9
 
 > **Did you workflow include using branches and pull requests? If yes, explain how. If not, explain how branches and**
 > **pull request can help improve version control.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We made use of both branches and PRs in our project. In our group, each member had an branch that they worked on in*
-> *addition to the main branch. To merge code we ...*
->
-> Answer:
+> Answer: Currently, our workflow uses a single branch called main. All development and updates are made directly on this branch. While this approach has worked for our current project size and team, using branches and pull requests can greatly improve version control and collaboration.
 
---- question 9 fill here ---
+Branches allow developers to work on features or fixes independently without affecting the main codebase. This reduces the risk of introducing bugs or conflicts. Pull requests then provide a formal way to review and discuss changes before merging them into the main branch, ensuring code quality and shared understanding. They also help maintain a clear history of changes and make it easier to roll back if needed.
 
 ### Question 10
 
 > **Did you use DVC for managing data in your project? If yes, then how did it improve your project to have version**
 > **control of your data. If no, explain a case where it would be beneficial to have version control of your data.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We did make use of DVC in the following way: ... . In the end it helped us in ... for controlling ... part of our*
-> *pipeline*
->
-> Answer:
+> Answer: Yes, we used DVC (Data Version Control) in our project to manage the raw_images/ folder, flower_labels.csv, and labels.csv. These files were essential for training and evaluating our model, and DVC helped us version them efficiently without storing large data directly in Git.
 
---- question 10 fill here ---
+Using DVC ensured that our data files remained in sync with our code, making it easier to reproduce experiments and track which data version was used for specific model runs. It also helped us avoid accidental overwrites or mismatches, especially when making updates to the dataset. Overall, DVC improved our workflow by bringing reliable version control to our data pipeline.
 
 ### Question 11
 
@@ -257,16 +270,7 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > **linting, etc.)? Do you test multiple operating systems, Python  version etc. Do you make use of caching? Feel free**
 > **to insert a link to one of your GitHub actions workflow.**
 >
-> Recommended answer length: 200-300 words.
->
-> Example:
-> *We have organized our continuous integration into 3 separate files: one for doing ..., one for running ... testing*
-> *and one for running ... . In particular for our ..., we used ... .An example of a triggered workflow can be seen*
-> *here: <weblink>*
->
-> Answer:
-
---- question 11 fill here ---
+> Answer: We did not use any continuous integration (CI) setup in this project. All testing and code checks were done manually, and there were no automated pipelines for tasks like unit testing, linting, or environment checks.
 
 ## Running code and tracking experiments
 
@@ -278,14 +282,7 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > **How did you configure experiments? Did you make use of config files? Explain with coding examples of how you would**
 > **run a experiment.**
 >
-> Recommended answer length: 50-100 words.
->
-> Example:
-> *We used a simple argparser, that worked in the following way: Python  my_script.py --lr 1e-3 --batch_size 25*
->
-> Answer:
-
---- question 12 fill here ---
+> Answer: We configured our experiment using a ResNet-18 model with pretrained=True and trained it for 5 epochs. Since we used a pre-trained model, we didn’t require extensive configuration or hyperparameter tuning. Key parameters like the number of epochs were set directly in the training script instead of using external config files. Due to limited compute resources on the cloud platform (CPU-only for training and preprocessing), we kept the training duration short. Despite these constraints, the model achieved around 95% accuracy on validation, demonstrating that transfer learning can be highly effective even with minimal setup.
 
 ### Question 13
 
