@@ -23,12 +23,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install ruff
         run: |
           python -m pip install -U pip setuptools wheel
-          pip install -r requirements.txt
-          pip install -r requirements_dev.txt
-          pip list
+          pip install ruff
+
+
+
 
       - name: ruff check
         run: |
