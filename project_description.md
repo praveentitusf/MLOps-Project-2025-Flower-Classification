@@ -50,6 +50,7 @@ These metrics are essential for monitoring training progress, detecting overfitt
 - Dileep Vemuri  
 - Ali Najibpour Nashi
 
+Project structure
 ```
 mlopspj/
     ├── .dvc/                        <- DVC cache and metadata
