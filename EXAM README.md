@@ -116,7 +116,6 @@ will check the repositories and the code to verify your answers.
 >
 > Answer:
 
---- question 1 fill here ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -124,10 +123,6 @@ will check the repositories and the code to verify your answers.
 > Answer: Praveen Titus Francis 12837557
 > Dileep Vemuri
 > Ali
->
-> 
-
---- question 2 fill here ---
 
 ### Question 3
 > **A requirement to the project is that you include a third-party package not covered in the course. What framework**
@@ -139,9 +134,7 @@ will check the repositories and the code to verify your answers.
 > *We used the third-party framework ... in our project. We used functionality ... and functionality ... from the*
 > *package to do ... and ... in our project*.
 >
-> Answer:
-
---- question 3 fill here ---
+> Answer: For this project, we used ResNet-18, a pre-trained deep convolutional neural network from the torchvision.models library. Although PyTorch was introduced in the course, using pre-trained architectures like ResNet-18 was not covered, making it a suitable third-party addition. ResNet-18’s skip connections enable efficient training and strong performance on image classification tasks. Leveraging transfer learning with this model allowed us to achieve high accuracy while reducing training time and computational cost. It also helped streamline the development process, allowing us to focus more on the MLOps pipeline, including data handling, experiment tracking, and deployment. Overall, ResNet-18 added great value.
 
 ## Coding environment
 
