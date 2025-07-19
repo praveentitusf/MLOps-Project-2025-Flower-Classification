@@ -64,7 +64,7 @@ mlopspj/
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
     ├── README.md                   <- Main project README (with Exam questions)
-    ├── project_description.md      <- Detailed description about the project
+    ├── PROJECT_DESCRIPTION.md      <- Detailed description about the project
 
     ├── configs/                    <- Configuration files for modules or pipelines
     
