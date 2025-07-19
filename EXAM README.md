@@ -297,14 +297,11 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **inspiration from [this figure](figures/wandb.png). Explain what metrics you are tracking and why they are**
 > **important.**
 >
-> Recommended answer length: 200-300 words + 1 to 3 screenshots.
->
-> Example:
-> *As seen in the first image when have tracked ... and ... which both inform us about ... in our experiments.*
-> *As seen in the second image we are also tracking ... and ...*
->
 > Answer:
-> ![wandb_runs](figures/wandb_runs.jpg)
+> ![wandb_runs1](figures/wandb_runs.jpg)
+> ![wandb_runs2](figures/wandb_runs.jpg)
+>
+> We conducted two training runs of a ResNet18 model and tracked the results using Weights & Biases (W&B) for better experiment management and comparison. Both runs are marked as finished and include key metrics such as training/validation loss, accuracy, and training steps. In the first run, we achieved a validation accuracy of 95.91% and a validation loss of 0.3036. In the second run, we reached a validation accuracy of 95.66% with a validation loss of 0.3147. Both models were trained for 4 epochs across 224 global steps. We observed a steady decrease in training loss and a rise in accuracy, indicating effective learning and good generalization. These metrics are crucial for evaluating model performance and diagnosing potential overfitting or underfitting. By using W&B, we can easily compare runs, visualize trends, and ensure reproducibility in our MLOps pipeline, helping us make informed decisions when tuning or deploying models.
 
 
 ### Question 15
@@ -312,30 +309,40 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **Docker is an important tool for creating containerized applications. Explain how you used docker in your**
 > **experiments/project? Include how you would run your docker images and include a link to one of your docker files.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *For our project we developed several images: one for training, inference and deployment. For example to run the*
-> *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
->
-> Answer:
+> Answer: Docker played a crucial role in our MLOps pipeline by enabling reproducible and isolated environments for different stages of the workflow. We created separate Docker images for preprocessing data, training the model, running the backend API, and serving the frontend UI:
 
---- question 15 fill here ---
+preprocess_docker: Handles data cleaning and formatting.
+https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
+
+train_docker: Trains the ResNet18 model using the cleaned data.
+https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
+
+backend_docker: Hosts the FastAPI or Flask-based inference API.
+https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/backend.dockerfile
+
+frontend_docker: Serves the user interface for visualizing predictions or metrics.
+https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/frontend.dockerfile
+
+By containerizing each component, we ensured consistency across development and deployment environments.
+
+Command to run docker image:
+```
+# Preprocessing step
+docker run --rm preprocess_docker
+
+# Model training
+docker run --rm train_docker
+```
 
 ### Question 16
 
 > **When running into bugs while trying to run your experiments, how did you perform debugging? Additionally, did you**
 > **try to profile your code or do you think it is already perfect?**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *Debugging method was dependent on group member. Some just used ... and others used ... . We did a single profiling*
-> *run of our main code at some point that showed ...*
->
-> Answer:
+> Answer: Since we used PyTorch Lightning, a lot of boilerplate and error-prone code was abstracted away, which reduced the number of bugs during training.
+> Interactive Debugging: We used the VSCode IDE’s built-in debugger to set breakpoints and inspect variables at runtime, which was particularly useful for catching logical errors.
 
---- question 16 fill here ---
+> Print Statements: In simpler cases, we relied on print statements to quickly check tensor shapes, values, and control flow.
 
 ## Working in the cloud
 
@@ -345,29 +352,36 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 
 > **List all the GCP services that you made use of in your project and shortly explain what each service does?**
 >
-> Recommended answer length: 50-200 words.
->
-> Example:
-> *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
->
 > Answer:
+> GCP Services Used in Our Project
+Compute Engine (VM Instances)
+We used virtual machines to run our training jobs, host APIs, and perform other development tasks. These VMs provided scalable compute resources with custom configurations.
 
---- question 17 fill here ---
+Cloud Storage
+Used to store large files such as datasets, model checkpoints, and output artifacts. It acted as a centralized and persistent storage layer accessible across services.
+
+Artifact Registry
+We used this to store and manage our Docker images. It allowed seamless integration with other GCP services like Cloud Run and Compute Engine, ensuring secure and versioned container deployments.
+
+Cloud Run
+Cloud Run was used to deploy our containerized backend API. It allowed us to run stateless HTTP services that automatically scale up or down based on traffic.
+
+Service Accounts
+Service accounts were configured to securely authenticate our containers and VMs when accessing other GCP services like Cloud Storage and Artifact Registry.
 
 ### Question 18
 
 > **The backbone of GCP is the Compute engine. Explained how you made use of this service and what type of VMs**
 > **you used?**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We used the compute engine to run our ... . We used instances with the following hardware: ... and we started the*
-> *using a custom container: ...*
->
-> Answer:
+> Answer: We used Google Compute Engine as the main compute resource for running various stages of our MLOps project, including model training, data preprocessing, and Dockerized applications. Compute Engine provided us with customizable virtual machines that we could scale based on the task requirements.
 
---- question 18 fill here ---
+Specifically, we used the n2-highmem-4 instance type, which offers 4 vCPUs and 32 GB of memory. This configuration gave us a good balance between compute power and memory, suitable for training deep learning models efficiently.
+
+We also configured Application Default Credentials (ADC) on the VM to securely access other GCP services such as Cloud Storage and Artifact Registry. This allowed the VM to authenticate without hardcoding credentials, making the setup secure and production-ready.
+
+Compute Engine was the backbone of our workflow, providing flexibility, control, and scalability during development and deployment.
+
 
 ### Question 19
 
@@ -375,8 +389,7 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-
---- question 19 fill here ---
+> [gbucket](figures/gbucket.jpg)
 
 ### Question 20
 
@@ -384,32 +397,23 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **stored. You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
-
---- question 20 fill here ---
+> [artifact_repo](artifact_repo/gbucket.jpg)
 
 ### Question 21
 
 > **Upload 1-2 images of your GCP cloud build history, so we can see the history of the images that have been build in**
 > **your project. You can take inspiration from [this figure](figures/build.png).**
 >
-> Answer:
+> Answer: In this project, instead of using an automated Cloud Build pipeline on Google Cloud Platform (GCP), we manually uploaded the built container images to the container registry. This means that the images were built in our development environment and then pushed directly to GCP’s Container Registry without triggering automated build history or build logs within the Cloud Build service.
 
---- question 21 fill here ---
+As a result, there is no automated Cloud Build history available to display. However, the container images are still available and can be verified in the Container Registry, showing the uploaded image versions and tags.
 
 ### Question 22
 
 > **Did you manage to train your model in the cloud using either the Engine or Vertex AI? If yes, explain how you did**
 > **it. If not, describe why.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We managed to train our model in the cloud using the Engine. We did this by ... . The reason we choose the Engine*
-> *was because ...*
->
-> Answer:
-
---- question 22 fill here ---
+> Answer: We performed both preprocessing and model training on a Google Cloud Compute Engine instance. To maximize performance within our budget, we selected the best available VM suited for the task. Inside this VM, we installed Docker to containerize our workflows. Both the preprocessing and training Docker images were pulled directly from our Artifact Registry and run inside the Compute Engine VM. After preprocessing, the processed data was saved to a Google Cloud Storage bucket. Once training was complete, the resulting model checkpoint file (.ckpt) was also saved to the same bucket for persistent storage and later use.
 
 ## Deployment
 
