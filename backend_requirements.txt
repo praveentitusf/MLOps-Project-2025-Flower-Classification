@@ -7,7 +7,7 @@ fsspec
 anyio
 google-cloud-secret-manager
 numpy==1.26.4
-pytorch-lightning==2.2.4
+pytorch-lightning==2.5.2
 python-multipart
 gcsfs
 

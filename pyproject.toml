@@ -19,7 +19,7 @@ dependencies = [
     "torch==2.2.2+cpu",
     "torchvision==0.17.2+cpu",
     "numpy==1.26.4",
-    "pytorch-lightning==2.2.4",
+    "pytorch-lightning==2.5.2",
     "wandb",
     "google-cloud-secret-manager",
     "gcsfs"
@@ -41,7 +41,7 @@ training = [
     "torch==2.2.2+cpu",
     "torchvision==0.17.2+cpu",
     "numpy==1.26.4",
-    "pytorch-lightning==2.2.4",
+    "pytorch-lightning==2.5.2",
     "wandb",
     "google-cloud-secret-manager",
     "gcsfs"
@@ -58,7 +58,7 @@ backend = [
     "anyio",
     "google-cloud-secret-manager",
     "numpy==1.26.4",
-    "pytorch-lightning==2.2.4",
+    "pytorch-lightning==2.5.2",
     "python-multipart",
     "gcsfs"
 ]
