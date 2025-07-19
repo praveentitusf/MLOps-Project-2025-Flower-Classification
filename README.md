@@ -1,4 +1,5 @@
 # Exam template for 02476 Machine Learning Operations
+# This project implements a complete MLOps pipeline for classifying 102 categories of flowers using deep learning.
 
 This is the report template for the exam. Please only remove the text formatted as with three dashes in front and behind
 like:
