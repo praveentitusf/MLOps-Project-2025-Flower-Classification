@@ -273,8 +273,9 @@ mlopspj/
 > **important.**
 >
 > Answer:
-![wandb_runs1](figures/wandb_run1.jpg)
-![wandb_runs2](figures/wandb_run2.jpg)
+![wandb_runs1](figures/wandb_runs1.jpg)
+
+![wandb_runs2](figures/wandb_runs2.jpg)
 >
 > We conducted two training runs of a ResNet18 model and tracked the results using Weights & Biases (W&B) for better experiment management and comparison. Both runs are marked as finished and include key metrics such as training/validation loss, accuracy, and training steps. In the first run, we achieved a validation accuracy of 95.91% and a validation loss of 0.3036. In the second run, we reached a validation accuracy of 95.66% with a validation loss of 0.3147. Both models were trained for 4 epochs across 224 global steps. We observed a steady decrease in training loss and a rise in accuracy, indicating effective learning and good generalization. These metrics are crucial for evaluating model performance and diagnosing potential overfitting or underfitting. By using W&B, we can easily compare runs, visualize trends, and ensure reproducibility in our MLOps pipeline, helping us make informed decisions when tuning or deploying models.
 
