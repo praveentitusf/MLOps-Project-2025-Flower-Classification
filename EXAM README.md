@@ -428,9 +428,9 @@ As a result, there is no automated Cloud Build history available to display. How
 > *We did manage to write an API for our model. We used FastAPI to do this. We did this by ... . We also added ...*
 > *to the API to make it more ...*
 >
-> Answer:
+> Answer: Yes, we wrote an API for our model using FastAPI for the backend. The backend is responsible for handling image classification requests. It loads the model checkpoint and label mappings from Google Cloud Storage, processes the uploaded image, performs inference using the trained model, and returns the predicted class.
 
---- question 23 fill here ---
+We also built a separate frontend using Streamlit (for UI) and FastAPI (for routing). The frontend allows users to upload images and displays the model’s prediction after receiving the response from the backend API.
 
 ### Question 24
 
@@ -444,9 +444,15 @@ As a result, there is no automated Cloud Build history available to display. How
 > *worked. Afterwards we deployed it in the cloud, using ... . To invoke the service an user would call*
 > *`curl -X POST -F "file=@file.json"<weburl>`*
 >
-> Answer:
+> Answer: Yes, we wrote an API for our model using FastAPI and deployed it as a backend service. We created two separate Docker containers: one for the backend API and another for the frontend UI. The frontend, built with Streamlit, allows users to upload images and is deployed in its own container.
 
---- question 24 fill here ---
+The frontend sends the uploaded image to the backend API, which loads the model checkpoint and class labels from Google Cloud Storage, processes the image, performs inference, and returns the predicted class. The backend handles all model logic and serves predictions.
+
+Both containers are deployed independently on Google Cloud Run, enabling scalable, serverless hosting. This separation ensures modularity, easier maintenance, and the ability to scale each component independently.
+
+# The overall flow: User → frontend UI → backend API → model inference → backend returns prediction → frontend displays output.
+
+## Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
 
 ### Question 25
 
@@ -459,9 +465,7 @@ As a result, there is no automated Cloud Build history available to display. How
 > *For unit testing we used ... and for load testing we used ... . The results of the load testing showed that ...*
 > *before the service crashed.*
 >
-> Answer:
-
---- question 25 fill here ---
+> Answer: We did not perform formal unit testing or load testing on our API. Instead, we relied on monitoring logs from Google Cloud Run for both the frontend and backend services. These logs provided real-time insights into the API’s behavior, including request handling, response times, and any errors encountered. By reviewing the logs, we were able to validate that the services were functioning correctly under expected usage and debug issues as they occurred. 
 
 ### Question 26
 
@@ -474,9 +478,9 @@ As a result, there is no automated Cloud Build history available to display. How
 > *We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could*
 > *measure ... and ... that would inform us about this ... behaviour of our application.*
 >
-> Answer:
+> Answer: We did not implement dedicated monitoring for our deployed model. However, we deployed both the frontend and backend services on Google Cloud Run, which provides built-in logging and basic metrics such as request count, error rates, and response latency. These logs allowed us to observe and debug the application during development and testing.
 
---- question 26 fill here ---
+Proper monitoring would significantly improve the longevity and reliability of our application. With a monitoring setup, we could track key metrics such as model performance over time, latency, API usage patterns, and potential data drift. This would help identify performance degradation, detect anomalies, and trigger alerts for unexpected behavior.
 
 ## Overall discussion of project
 
@@ -494,8 +498,23 @@ As a result, there is no automated Cloud Build history available to display. How
 > *costing the most was ... due to ... . Working in the cloud was ...*
 >
 > Answer:
+```
+| Service             | Cost (€) |
+|---------------------|----------|
+| Compute Engine      | €8.91    |
+| Cloud Storage       | €2.60    |
+| Cloud Run           | €0.73    |
+| Networking          | €0.11    |
+| VM Manager          | €0.10    |
+| Artifact Registry   | €0.01    |
+| Cloud Run Functions | €0.00    |
+| **Total**           | **€12.46** |
+```
+Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
 
---- question 27 fill here ---
+The pay-as-you-go model kept costs manageable, especially since we were able to use free tier services for some components. However, Compute Engine was the most expensive part of our setup due to its heavy use during model training.
+
+Overall, the cloud made development faster, deployment smoother, and team collaboration easier. For future projects, we’d aim to optimize usage further and explore cost-saving features like sustained use discounts or committed use contracts.
 
 ### Question 28
 
@@ -509,7 +528,7 @@ As a result, there is no automated Cloud Build history available to display. How
 > *We implemented a frontend for our API. We did this because we wanted to show the user ... . The frontend was*
 > *implemented using ...*
 >
-> Answer:
+> Answer: We did not implement any extra features beyond what was covered in the course material. The components and tools provided in the course, such as FastAPI for serving the model, Docker for containerization, Google Cloud services for deployment, and Streamlit for the frontend were sufficient for building a complete and functional MLOps pipeline. We focused on understanding and applying these core concepts effectively rather than adding additional complexity.
 
 --- question 28 fill here ---
 
@@ -526,7 +545,13 @@ As a result, there is no automated Cloud Build history available to display. How
 > *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
 > *Whenever we commit code and push to GitHub, it auto triggers ... and ... . From there the diagram shows ...*
 >
-> Answer:
+> Answer: The starting point of our system is the local development environment, where we build Docker images for both the model training pipeline and the application deployment pipeline. For the training pipeline, we create Docker containers that include preprocessing and model training scripts. Similarly, for deployment, we build Docker images containing the backend service (implemented using FastAPI) and the frontend interface (using Streamlit).
+
+Once the Docker images are built locally, they are pushed to the Google Artifact Registry, which acts as a centralized repository for container images, enabling easy version control and deployment. The training pipeline images are then deployed to a Google Cloud Compute Engine (GCE) virtual machine, where the preprocessing and model training steps are executed. After the model is trained, the resulting model artifacts are saved to Google Cloud Storage, providing persistent and scalable storage.
+
+For the deployment pipeline, the backend and frontend Docker images are deployed to Google Cloud Run, a fully managed serverless platform that handles container execution and scaling automatically. The frontend presents a user interface where users can upload images. These images are sent to the backend service, which loads the trained model from Google Cloud Storage to generate predictions. Finally, the prediction results are returned and displayed on the frontend UI.
+
+This architecture separates concerns by isolating model training from deployment, leveraging managed cloud services for scalability, and ensuring a smooth workflow from data preprocessing to real-time prediction. The use of Docker containers throughout guarantees reproducibility and consistent environments across local development and cloud infrastructure.
 
 --- question 29 fill here ---
 
@@ -540,9 +565,15 @@ As a result, there is no automated Cloud Build history available to display. How
 > Example:
 > *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
 >
-> Answer:
+> Answer: One of the biggest challenges we faced in this project was setting up the cloud infrastructure on Google Cloud Platform (GCP). Specifically, configuring service account roles and setting up Application Default Credentials (ADC) for the Virtual Machine (VM) was time-consuming and required careful attention to permission scopes. The documentation often lacked clarity, and we had to troubleshoot errors that stemmed from missing IAM roles or improperly configured ADCs.
 
---- question 30 fill here ---
+Another major challenge was identifying the right VM configuration for training and preprocessing tasks. Due to quota limitations on our trial account, we had to test different regions and machine types to find a setup that met our resource requirements and was available for deployment. This process was iterative and required us to adapt our Docker containers to ensure compatibility across environments.
+
+We also spent a significant amount of time developing and containerizing both the backend and frontend components. The backend, built using FastAPI, handled prediction requests, model loading, and logging. The frontend, created with Streamlit, needed to be intuitive and responsive, while integrating smoothly with the backend API. Deploying these to Cloud Run involved learning how to write efficient Dockerfiles, manage environment variables, and troubleshoot deployment errors.
+
+Integrating the frontend and backend presented additional challenges, such as CORS issues, asynchronous request handling, and ensuring real-time responsiveness. Debugging these issues was difficult due to scattered documentation and platform-specific behavior.
+
+Overall, we spent the most time on creating and integrating the backend and frontend systems. We overcame these obstacles by dividing tasks, sharing knowledge, consulting forums, and iteratively testing each module. This hands-on experience significantly improved our understanding of deploying full-stack machine learning systems on the cloud.
 
 ### Question 31
 
@@ -559,15 +590,11 @@ As a result, there is no automated Cloud Build history available to display. How
 > *All members contributed to code by...*
 > *We have used ChatGPT to help debug our code. Additionally, we used GitHub Copilot to help write some of our code.*
 > Answer:
+> Ali Najibpour Nashi:
+>Ali developed the training and preprocessing scripts and located the required datasets. He ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
 
-fewafewubaofewnafioewnifowf ewafw afew afewafewafionewoanf waf ewonfieownaf fewnaiof newio fweanøf wea fewa
- fweafewa fewiagonwa ognwra'g
- wa
- gwreapig ipweroang w rag
- wa grwa
-  g
-  ew
-  gwea g
-  ew ag ioreabnguorwa bg̈́aw
-   wa
-   gew4igioera giroeahgi0wra gwa
+> Dileep Vemuri:
+Dileep set up and configured the cloud virtual machine, including installing Docker inside the VM. He managed service accounts and created cloud storage buckets to handle data securely. Additionally, he integrated Weights & Biases (WandB) for experiment tracking.
+
+> Praveen Titus Francis:
+Titus containerized the training, preprocessing, backend, and frontend components using Docker. He developed the backend and frontend services and deployed them on Google Cloud Run. His work enabled smooth deployment and access to the full application.
