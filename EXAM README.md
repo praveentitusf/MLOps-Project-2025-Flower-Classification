@@ -152,9 +152,9 @@ will check the repositories and the code to verify your answers.
 > *We used ... for managing our dependencies. The list of dependencies was auto-generated using ... . To get a*
 > *complete copy of our development environment, one would have to run the following commands*
 >
-> Answer:
+> Answer:We used a virtual environment to isolate the project's dependencies from the system-wide Python packages, ensuring a clean and conflict-free setup. To manage dependencies across different stages of the project, we maintained separate requirement files: preprocess_requirements.txt, train_requirements.txt, backend_requirements.txt, and frontend_requirements.txt. These files allow new team members to easily install the necessary packages for each component.
 
---- question 4 fill here ---
+Additionally, we created Dockerfiles to containerize the application, ensuring consistent environments across development, testing, and deployment. Instead of manually installing dependencies, users can simply build and run the Docker containers, which encapsulate all setup steps for each module.
 
 ### Question 5
 
