@@ -495,10 +495,10 @@ docker run --rm train_docker
 >
 > Answer:
 > Ali Najibpour Nashi:
-> Developed the training and preprocessing scripts and located the required datasets. He ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
+> Developed the training and preprocessing scripts and located the required datasets. Ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
 
 > Dileep Vemuri:
-> Set up and configured the cloud virtual machine, including installing Docker inside the VM. He managed service accounts and created cloud storage buckets to handle data securely. Additionally, he integrated Weights & Biases (WandB) for experiment tracking.
+> Set up and configured the cloud virtual machine, including installing Docker inside the VM. Managed service accounts and created cloud storage buckets to handle data securely. Additionally, integrated Weights & Biases (WandB) for experiment tracking.
 
 > Praveen Titus Francis:
-> containerized the training, preprocessing, backend, and frontend components using Docker. He developed the backend and frontend services and deployed them on Google Cloud Run. His work enabled smooth deployment and access to the full application.
+> Containerized the training, preprocessing, backend, and frontend components using Docker. Developed the backend and frontend services and deployed them on Google Cloud Run. His work enabled smooth deployment and access to the full application.
