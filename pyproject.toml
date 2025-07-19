@@ -1,49 +1,115 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "flowerclassif"
+name = "mlops-project"
 version = "0.1.0"
-description = "MLOps project for flower classification using PyTorch"
+description = "102 Category Flower Classification using ResNet18 and PyTorch Lightning."
 authors = [
-  { name = "Dat", email = "your@email.com" },
+    { name = "Praveen Titus Francis" },
+    { name = "Dileep Vemuri" }
 ]
-
+license = { text = "MIT" }
+requires-python = ">=3.13"
 readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.12"
 
-keywords = ["machine learning", "MLOps", "flower classification", "PyTorch"]
-
-classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Developers",
-  "Intended Audience :: Science/Research",
-  "Topic :: Scientific/Engineering :: Artificial Intelligence",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.12",
+# Core dependencies
+dependencies = [
+    "torch==2.2.2+cpu",
+    "torchvision==0.17.2+cpu",
+    "numpy==1.26.4",
+    "pytorch-lightning==2.2.4",
+    "wandb",
+    "google-cloud-secret-manager",
+    "gcsfs"
 ]
 
-# Automatically pull in requirements from file
-dynamic = ["dependencies", "optional-dependencies"]
+[project.optional-dependencies]
+# Optional group for preprocessing
+preprocess = [
+    "torch",
+    "torchvision",
+    "google-cloud-secret-manager",
+    "pandas",
+    "gcsfs",
+    "Pillow"
+]
+
+# Optional group for training
+training = [
+    "torch==2.2.2+cpu",
+    "torchvision==0.17.2+cpu",
+    "numpy==1.26.4",
+    "pytorch-lightning==2.2.4",
+    "wandb",
+    "google-cloud-secret-manager",
+    "gcsfs"
+]
+
+# Optional group for backend
+backend = [
+    "fastapi",
+    "uvicorn[standard]",
+    "torch==2.2.2+cpu",
+    "torchvision==0.17.2+cpu",
+    "pillow",
+    "fsspec",
+    "anyio",
+    "google-cloud-secret-manager",
+    "numpy==1.26.4",
+    "pytorch-lightning==2.2.4",
+    "python-multipart",
+    "gcsfs"
+]
+
+# Optional group for frontend
+frontend = [
+    "streamlit",
+    "requests",
+    "google-cloud-run"
+]
 
 [tool.setuptools]
-packages = ["flowerclassif"]
-package-dir = {"" = "src"}
+packages = ["project_name"]
+package-dir = { "" = "src" }
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+[tool.black]
+line-length = 88
+target-version = ['py313']
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | notebooks
+)/
+'''
 
-[tool.setuptools.dynamic.optional-dependencies]
-dev = {file = ["requirements_dev.txt"]}
+[tool.isort]
+profile = "black"
+line_length = 88
+src_paths = ["src", "tests"]
 
 [tool.ruff]
-line-length = 120
+line-length = 88
+target-version = "py313"
+exclude = ["notebooks", ".venv", "build", "dist"]
 
+# Ruff rules (optional, stricter style checking)
 [tool.ruff.lint]
-select = ["I", "N", "E", "W"]
+select = ["E", "F", "B"]  # E = pycodestyle errors, F = pyflakes, B = bugbear
+ignore = ["E501"]         # Ignore line-too-long if Black is used
 
-[tool.coverage.run]
-omit = ["tests/*", "src/flowerclassif/__main__.py"]
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true
+strict = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
