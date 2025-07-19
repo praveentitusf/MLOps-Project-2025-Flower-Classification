@@ -6,7 +6,7 @@ torchvision==0.17.2+cpu
 
 # The rest from PyPI
 numpy==1.26.4
-pytorch-lightning==2.2.4
+pytorch-lightning==2.5.2
 wandb
 google-cloud-secret-manager
 gcsfs
