@@ -116,23 +116,16 @@ will check the repositories and the code to verify your answers.
 >
 > Answer:
 
-
 ### Question 2
 > **Enter the study number for each member in the group**
 >
-> Answer: Praveen Titus Francis 12837557
-> Dileep Vemuri
-> Ali
+> Answer: Praveen Titus Francis : 12837557
+> Dileep Vemuri : 12818965
+> Ali Najibpour Nashi : 12644070
 
 ### Question 3
 > **A requirement to the project is that you include a third-party package not covered in the course. What framework**
 > **did you choose to work with and did it help you complete the project?**
->
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We used the third-party framework ... in our project. We used functionality ... and functionality ... from the*
-> *package to do ... and ... in our project*.
 >
 > Answer: For this project, we used ResNet-18, a pre-trained deep convolutional neural network from the torchvision.models library. Although PyTorch was introduced in the course, using pre-trained architectures like ResNet-18 was not covered, making it a suitable third-party addition. ResNet-18’s skip connections enable efficient training and strong performance on image classification tasks. Leveraging transfer learning with this model allowed us to achieve high accuracy while reducing training time and computational cost. It also helped streamline the development process, allowing us to focus more on the MLOps pipeline, including data handling, experiment tracking, and deployment. Overall, ResNet-18 added great value.
 
@@ -146,29 +139,16 @@ will check the repositories and the code to verify your answers.
 > **Explain how you managed dependencies in your project? Explain the process a new team member would have to go**
 > **through to get an exact copy of your environment.**
 >
-> Recommended answer length: 100-200 words
->
-> Example:
-> *We used ... for managing our dependencies. The list of dependencies was auto-generated using ... . To get a*
-> *complete copy of our development environment, one would have to run the following commands*
->
 > Answer:We used a virtual environment to isolate the project's dependencies from the system-wide Python packages, ensuring a clean and conflict-free setup. To manage dependencies across different stages of the project, we maintained separate requirement files: preprocess_requirements.txt, train_requirements.txt, backend_requirements.txt, and frontend_requirements.txt. These files allow new team members to easily install the necessary packages for each component.
 
-Additionally, we created Dockerfiles to containerize the application, ensuring consistent environments across development, testing, and deployment. Instead of manually installing dependencies, users can simply build and run the Docker containers, which encapsulate all setup steps for each module.
+>Additionally, we created Dockerfiles to containerize the application, ensuring consistent environments across development, testing, and deployment. Instead of manually installing dependencies, users can simply build and run the Docker containers, which encapsulate all setup steps for each module.
 
 ### Question 5
 
 > **We expect that you initialized your project using the cookiecutter template. Explain the overall structure of your**
 > **code. What did you fill out? Did you deviate from the template in some way?**
 >
-> Recommended answer length: 100-200 words
->
-> Example:
-> *From the cookiecutter template we have filled out the ... , ... and ... folder. We have removed the ... folder*
-> *because we did not use any ... in our project. We have added an ... folder that contains ... for running our*
-> *experiments.*
->
-> Answer: Project structure
+> Answer: Project structure: used Cookie-cutter template, and kept only the relevant folder.
 ```
 mlopspj/
     ├── .dvc/                        <- DVC cache and metadata
@@ -183,8 +163,7 @@ mlopspj/
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
     ├── README.md                   <- Main project README
-    ├── README copy.md              <- Possibly a backup or alt version
-    
+   
     ├── configs/                    <- Configuration files for modules or pipelines
     
     ├── data/                       <- Versioned data folder (tracked with DVC)
@@ -213,17 +192,11 @@ mlopspj/
 > **Did you implement any rules for code quality and format? What about typing and documentation? Additionally,**
 > **explain with your own words why these concepts matters in larger projects.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We used ... for linting and ... for formatting. We also used ... for typing and ... for documentation. These*
-> *concepts are important in larger projects because ... . For example, typing ...*
->
 > Answer: Yes, we implemented several rules for code quality and formatting to maintain a clean and consistent codebase. We followed PEP8 guidelines using tools like Ruff for linting and code style enforcement. Our code is modular, with separate scripts for training, preprocessing, and serving, making it easier to test and maintain.
 
-We also used type hints in our functions to improve code clarity and help with debugging and static analysis. Additionally, we included docstrings to explain the purpose and expected inputs/outputs of functions, which improves code readability and helps other developers understand the logic faster.
+> We also used type hints in our functions to improve code clarity and help with debugging and static analysis. Additionally, we included docstrings to explain the purpose and expected inputs/outputs of functions, which improves code readability and helps other developers understand the logic faster.
 
-These practices are especially important in larger projects, where multiple people work on the same codebase over time. Consistent formatting, proper typing, and clear documentation reduce confusion, prevent bugs, and make onboarding new contributors easier. They also support better tooling and automated testing, which is critical for maintaining quality as the project grows.
+> These practices are especially important in larger projects, where multiple people work on the same codebase over time. Consistent formatting, proper typing, and clear documentation reduce confusion, prevent bugs, and make onboarding new contributors easier. They also support better tooling and automated testing, which is critical for maintaining quality as the project grows.
 
 ## Version control
 
@@ -243,7 +216,7 @@ These practices are especially important in larger projects, where multiple peop
 >
 > Answer: Since we relied on manual testing rather than automated tests, we don’t have a measurable code coverage percentage. Manual testing allowed us to verify key functionalities and expected behaviors through hands-on exploration.
 
-Even if we had automated tests with 100% coverage, that alone wouldn’t guarantee the code is completely error-free. Code coverage only shows which parts of the code were executed during testing, but it doesn’t ensure all edge cases are tested or that outputs are always correct.
+> Even if we had automated tests with 100% coverage, that alone wouldn’t guarantee the code is completely error-free. Code coverage only shows which parts of the code were executed during testing, but it doesn’t ensure all edge cases are tested or that outputs are always correct.
 
 ### Question 9
 
@@ -252,7 +225,7 @@ Even if we had automated tests with 100% coverage, that alone wouldn’t guarant
 >
 > Answer: Currently, our workflow uses a single branch called main. All development and updates are made directly on this branch. While this approach has worked for our current project size and team, using branches and pull requests can greatly improve version control and collaboration.
 
-Branches allow developers to work on features or fixes independently without affecting the main codebase. This reduces the risk of introducing bugs or conflicts. Pull requests then provide a formal way to review and discuss changes before merging them into the main branch, ensuring code quality and shared understanding. They also help maintain a clear history of changes and make it easier to roll back if needed.
+> Branches allow developers to work on features or fixes independently without affecting the main codebase. This reduces the risk of introducing bugs or conflicts. Pull requests then provide a formal way to review and discuss changes before merging them into the main branch, ensuring code quality and shared understanding. They also help maintain a clear history of changes and make it easier to roll back if needed.
 
 ### Question 10
 
@@ -261,7 +234,7 @@ Branches allow developers to work on features or fixes independently without aff
 >
 > Answer: Yes, we used DVC (Data Version Control) in our project to manage the raw_images/ folder, flower_labels.csv, and labels.csv. These files were essential for training and evaluating our model, and DVC helped us version them efficiently without storing large data directly in Git.
 
-Using DVC ensured that our data files remained in sync with our code, making it easier to reproduce experiments and track which data version was used for specific model runs. It also helped us avoid accidental overwrites or mismatches, especially when making updates to the dataset. Overall, DVC improved our workflow by bringing reliable version control to our data pipeline.
+> Using DVC ensured that our data files remained in sync with our code, making it easier to reproduce experiments and track which data version was used for specific model runs. It also helped us avoid accidental overwrites or mismatches, especially when making updates to the dataset. Overall, DVC improved our workflow by bringing reliable version control to our data pipeline.
 
 ### Question 11
 
@@ -309,27 +282,15 @@ Using DVC ensured that our data files remained in sync with our code, making it 
 > **Docker is an important tool for creating containerized applications. Explain how you used docker in your**
 > **experiments/project? Include how you would run your docker images and include a link to one of your docker files.**
 >
-> Answer: Docker played a crucial role in our MLOps pipeline by enabling reproducible and isolated environments for different stages of the workflow. We created separate Docker images for preprocessing data, training the model, running the backend API, and serving the frontend UI:
+> Answer: Docker played a crucial role in our MLOps pipeline by enabling reproducible and isolated environments for different stages of the workflow. We created separate >Docker images for preprocessing data, training the model, running the backend API, and serving the frontend UI:
 
-preprocess_docker: Handles data cleaning and formatting.
-https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
+> train_docker: Trains the ResNet18 model using the preprocessed data.
+> https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
 
-train_docker: Trains the ResNet18 model using the cleaned data.
-https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
+> By containerizing each component, we ensured consistency across development and deployment environments.
 
-backend_docker: Hosts the FastAPI or Flask-based inference API.
-https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/backend.dockerfile
-
-frontend_docker: Serves the user interface for visualizing predictions or metrics.
-https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/frontend.dockerfile
-
-By containerizing each component, we ensured consistency across development and deployment environments.
-
-Command to run docker image:
+> Command to run docker image:
 ```
-# Preprocessing step
-docker run --rm preprocess_docker
-
 # Model training
 docker run --rm train_docker
 ```
@@ -340,6 +301,7 @@ docker run --rm train_docker
 > **try to profile your code or do you think it is already perfect?**
 >
 > Answer: Since we used PyTorch Lightning, a lot of boilerplate and error-prone code was abstracted away, which reduced the number of bugs during training.
+
 > Interactive Debugging: We used the VSCode IDE’s built-in debugger to set breakpoints and inspect variables at runtime, which was particularly useful for catching logical errors.
 
 > Print Statements: In simpler cases, we relied on print statements to quickly check tensor shapes, values, and control flow.
@@ -354,20 +316,20 @@ docker run --rm train_docker
 >
 > Answer:
 > GCP Services Used in Our Project
-Compute Engine (VM Instances)
-We used virtual machines to run our training jobs, host APIs, and perform other development tasks. These VMs provided scalable compute resources with custom configurations.
+> Compute Engine (VM Instances)
+> We used virtual machines to run our training jobs, host APIs, and perform other development tasks. These VMs provided scalable compute resources with custom configurations.
 
-Cloud Storage
-Used to store large files such as datasets, model checkpoints, and output artifacts. It acted as a centralized and persistent storage layer accessible across services.
+> Cloud Storage
+> Used to store large files such as datasets, model checkpoints, and output artifacts. It acted as a centralized and persistent storage layer accessible across services.
 
-Artifact Registry
-We used this to store and manage our Docker images. It allowed seamless integration with other GCP services like Cloud Run and Compute Engine, ensuring secure and versioned container deployments.
+>Artifact Registry
+>We used this to store and manage our Docker images. It allowed seamless integration with other GCP services like Cloud Run and Compute Engine, ensuring secure and versioned container deployments.
 
-Cloud Run
-Cloud Run was used to deploy our containerized backend API. It allowed us to run stateless HTTP services that automatically scale up or down based on traffic.
+> Cloud Run
+> Cloud Run was used to deploy our containerized backend API. It allowed us to run stateless HTTP services that automatically scale up or down based on traffic.
 
-Service Accounts
-Service accounts were configured to securely authenticate our containers and VMs when accessing other GCP services like Cloud Storage and Artifact Registry.
+> Service Accounts
+> Service accounts were configured to securely authenticate our containers and VMs when accessing other GCP services like Cloud Storage and Artifact Registry.
 
 ### Question 18
 
@@ -376,11 +338,11 @@ Service accounts were configured to securely authenticate our containers and VMs
 >
 > Answer: We used Google Compute Engine as the main compute resource for running various stages of our MLOps project, including model training, data preprocessing, and Dockerized applications. Compute Engine provided us with customizable virtual machines that we could scale based on the task requirements.
 
-Specifically, we used the n2-highmem-4 instance type, which offers 4 vCPUs and 32 GB of memory. This configuration gave us a good balance between compute power and memory, suitable for training deep learning models efficiently.
+> Specifically, we used the n2-highmem-4 instance type, which offers 4 vCPUs and 32 GB of memory. This configuration gave us a good balance between compute power and memory, suitable for training deep learning models efficiently.
 
-We also configured Application Default Credentials (ADC) on the VM to securely access other GCP services such as Cloud Storage and Artifact Registry. This allowed the VM to authenticate without hardcoding credentials, making the setup secure and production-ready.
+> We also configured Application Default Credentials (ADC) on the VM to securely access other GCP services such as Cloud Storage and Artifact Registry. This allowed the VM to authenticate without hardcoding credentials, making the setup secure and production-ready.
 
-Compute Engine was the backbone of our workflow, providing flexibility, control, and scalability during development and deployment.
+> Compute Engine was the backbone of our workflow, providing flexibility, control, and scalability during development and deployment.
 
 
 ### Question 19
@@ -406,7 +368,7 @@ Compute Engine was the backbone of our workflow, providing flexibility, control,
 >
 > Answer: In this project, instead of using an automated Cloud Build pipeline on Google Cloud Platform (GCP), we manually uploaded the built container images to the container registry. This means that the images were built in our development environment and then pushed directly to GCP’s Container Registry without triggering automated build history or build logs within the Cloud Build service.
 
-As a result, there is no automated Cloud Build history available to display. However, the container images are still available and can be verified in the Container Registry, showing the uploaded image versions and tags.
+> As a result, there is no automated Cloud Build history available to display. However, the container images are still available and can be verified in the Container Registry, showing the uploaded image versions and tags.
 
 ### Question 22
 
@@ -422,48 +384,27 @@ As a result, there is no automated Cloud Build history available to display. How
 > **Did you manage to write an API for your model? If yes, explain how you did it and if you did anything special. If**
 > **not, explain how you would do it.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We did manage to write an API for our model. We used FastAPI to do this. We did this by ... . We also added ...*
-> *to the API to make it more ...*
->
 > Answer: Yes, we wrote an API for our model using FastAPI for the backend. The backend is responsible for handling image classification requests. It loads the model checkpoint and label mappings from Google Cloud Storage, processes the uploaded image, performs inference using the trained model, and returns the predicted class.
 
-We also built a separate frontend using Streamlit (for UI) and FastAPI (for routing). The frontend allows users to upload images and displays the model’s prediction after receiving the response from the backend API.
+> We also built a separate frontend using Streamlit (for UI) and FastAPI (for routing). The frontend allows users to upload images and displays the model’s prediction after receiving the response from the backend API.
 
 ### Question 24
 
 > **Did you manage to deploy your API, either in locally or cloud? If not, describe why. If yes, describe how and**
 > **preferably how you invoke your deployed service?**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *For deployment we wrapped our model into application using ... . We first tried locally serving the model, which*
-> *worked. Afterwards we deployed it in the cloud, using ... . To invoke the service an user would call*
-> *`curl -X POST -F "file=@file.json"<weburl>`*
->
 > Answer: Yes, we wrote an API for our model using FastAPI and deployed it as a backend service. We created two separate Docker containers: one for the backend API and another for the frontend UI. The frontend, built with Streamlit, allows users to upload images and is deployed in its own container.
 
-The frontend sends the uploaded image to the backend API, which loads the model checkpoint and class labels from Google Cloud Storage, processes the image, performs inference, and returns the predicted class. The backend handles all model logic and serves predictions.
+> The frontend sends the uploaded image to the backend API, which loads the model checkpoint and class labels from Google Cloud Storage, processes the image, performs inference, and returns the predicted class. The backend handles all model logic and serves predictions.
 
-Both containers are deployed independently on Google Cloud Run, enabling scalable, serverless hosting. This separation ensures modularity, easier maintenance, and the ability to scale each component independently.
+> Both containers are deployed independently on Google Cloud Run, enabling scalable, serverless hosting. This separation ensures modularity, easier maintenance, and the ability to scale each component independently.
 
-# The overall flow: User → frontend UI → backend API → model inference → backend returns prediction → frontend displays output.
-
-## Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
+> ## Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
 
 ### Question 25
 
 > **Did you perform any unit testing and load testing of your API? If yes, explain how you did it and what results for**
 > **the load testing did you get. If not, explain how you would do it.**
->
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *For unit testing we used ... and for load testing we used ... . The results of the load testing showed that ...*
-> *before the service crashed.*
 >
 > Answer: We did not perform formal unit testing or load testing on our API. Instead, we relied on monitoring logs from Google Cloud Run for both the frontend and backend services. These logs provided real-time insights into the API’s behavior, including request handling, response times, and any errors encountered. By reviewing the logs, we were able to validate that the services were functioning correctly under expected usage and debug issues as they occurred. 
 
@@ -472,15 +413,9 @@ Both containers are deployed independently on Google Cloud Run, enabling scalabl
 > **Did you manage to implement monitoring of your deployed model? If yes, explain how it works. If not, explain how**
 > **monitoring would help the longevity of your application.**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could*
-> *measure ... and ... that would inform us about this ... behaviour of our application.*
->
 > Answer: We did not implement dedicated monitoring for our deployed model. However, we deployed both the frontend and backend services on Google Cloud Run, which provides built-in logging and basic metrics such as request count, error rates, and response latency. These logs allowed us to observe and debug the application during development and testing.
 
-Proper monitoring would significantly improve the longevity and reliability of our application. With a monitoring setup, we could track key metrics such as model performance over time, latency, API usage patterns, and potential data drift. This would help identify performance degradation, detect anomalies, and trigger alerts for unexpected behavior.
+> Proper monitoring would significantly improve the longevity and reliability of our application. With a monitoring setup, we could track key metrics such as model performance over time, latency, API usage patterns, and potential data drift. This would help identify performance degradation, detect anomalies, and trigger alerts for unexpected behavior.
 
 ## Overall discussion of project
 
@@ -491,13 +426,8 @@ Proper monitoring would significantly improve the longevity and reliability of o
 > **How many credits did you end up using during the project and what service was most expensive? In general what do**
 > **you think about working in the cloud?**
 >
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *Group member 1 used ..., Group member 2 used ..., in total ... credits was spend during development. The service*
-> *costing the most was ... due to ... . Working in the cloud was ...*
->
 > Answer:
+> 
 ```
 | Service             | Cost (€) |
 |---------------------|----------|
@@ -510,11 +440,11 @@ Proper monitoring would significantly improve the longevity and reliability of o
 | Cloud Run Functions | €0.00    |
 | **Total**           | **€12.46** |
 ```
-Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
+> Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
 
-The pay-as-you-go model kept costs manageable, especially since we were able to use free tier services for some components. However, Compute Engine was the most expensive part of our setup due to its heavy use during model training.
+> The pay-as-you-go model kept costs manageable, especially since we were able to use free tier services for some components. However, Compute Engine was the most expensive part of our setup due to its heavy use during model training.
 
-Overall, the cloud made development faster, deployment smoother, and team collaboration easier. For future projects, we’d aim to optimize usage further and explore cost-saving features like sustained use discounts or committed use contracts.
+> Overall, the cloud made development faster, deployment smoother, and team collaboration easier. For future projects, we’d aim to optimize usage further and explore cost-saving features like sustained use discounts or committed use contracts.
 
 ### Question 28
 
@@ -522,15 +452,7 @@ Overall, the cloud made development faster, deployment smoother, and team collab
 > **a frontend for your API, use extra version control features, a drift detection service, a kubernetes cluster etc.**
 > **If yes, explain what you did and why.**
 >
-> Recommended answer length: 0-200 words.
->
-> Example:
-> *We implemented a frontend for our API. We did this because we wanted to show the user ... . The frontend was*
-> *implemented using ...*
->
 > Answer: We did not implement any extra features beyond what was covered in the course material. The components and tools provided in the course, such as FastAPI for serving the model, Docker for containerization, Google Cloud services for deployment, and Streamlit for the frontend were sufficient for building a complete and functional MLOps pipeline. We focused on understanding and applying these core concepts effectively rather than adding additional complexity.
-
---- question 28 fill here ---
 
 ### Question 29
 
@@ -538,42 +460,30 @@ Overall, the cloud made development faster, deployment smoother, and team collab
 > **You can take inspiration from [this figure](figures/overview.png). Additionally, in your own words, explain the**
 > **overall steps in figure.**
 >
-> Recommended answer length: 200-400 words
->
-> Example:
->
-> *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and push to GitHub, it auto triggers ... and ... . From there the diagram shows ...*
->
+> [workflow](figures/workflow.jpg)
+> 
 > Answer: The starting point of our system is the local development environment, where we build Docker images for both the model training pipeline and the application deployment pipeline. For the training pipeline, we create Docker containers that include preprocessing and model training scripts. Similarly, for deployment, we build Docker images containing the backend service (implemented using FastAPI) and the frontend interface (using Streamlit).
 
-Once the Docker images are built locally, they are pushed to the Google Artifact Registry, which acts as a centralized repository for container images, enabling easy version control and deployment. The training pipeline images are then deployed to a Google Cloud Compute Engine (GCE) virtual machine, where the preprocessing and model training steps are executed. After the model is trained, the resulting model artifacts are saved to Google Cloud Storage, providing persistent and scalable storage.
+> Once the Docker images are built locally, they are pushed to the Google Artifact Registry, which acts as a centralized repository for container images, enabling easy version control and deployment. The training pipeline images are then deployed to a Google Cloud Compute Engine (GCE) virtual machine, where the preprocessing and model training steps are executed. After the model is trained, the resulting model artifacts are saved to Google Cloud Storage, providing persistent and scalable storage.
 
-For the deployment pipeline, the backend and frontend Docker images are deployed to Google Cloud Run, a fully managed serverless platform that handles container execution and scaling automatically. The frontend presents a user interface where users can upload images. These images are sent to the backend service, which loads the trained model from Google Cloud Storage to generate predictions. Finally, the prediction results are returned and displayed on the frontend UI.
+> For the deployment pipeline, the backend and frontend Docker images are deployed to Google Cloud Run, a fully managed serverless platform that handles container execution and scaling automatically. The frontend presents a user interface where users can upload images. These images are sent to the backend service, which loads the trained model from Google Cloud Storage to generate predictions. Finally, the prediction results are returned and displayed on the frontend UI.
 
-This architecture separates concerns by isolating model training from deployment, leveraging managed cloud services for scalability, and ensuring a smooth workflow from data preprocessing to real-time prediction. The use of Docker containers throughout guarantees reproducibility and consistent environments across local development and cloud infrastructure.
-
---- question 29 fill here ---
+> This architecture separates concerns by isolating model training from deployment, leveraging managed cloud services for scalability, and ensuring a smooth workflow from data preprocessing to real-time prediction. The use of Docker containers throughout guarantees reproducibility and consistent environments across local development and cloud infrastructure.
 
 ### Question 30
 
 > **Discuss the overall struggles of the project. Where did you spend most time and what did you do to overcome these**
 > **challenges?**
 >
-> Recommended answer length: 200-400 words.
->
-> Example:
-> *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
->
 > Answer: One of the biggest challenges we faced in this project was setting up the cloud infrastructure on Google Cloud Platform (GCP). Specifically, configuring service account roles and setting up Application Default Credentials (ADC) for the Virtual Machine (VM) was time-consuming and required careful attention to permission scopes. The documentation often lacked clarity, and we had to troubleshoot errors that stemmed from missing IAM roles or improperly configured ADCs.
 
-Another major challenge was identifying the right VM configuration for training and preprocessing tasks. Due to quota limitations on our trial account, we had to test different regions and machine types to find a setup that met our resource requirements and was available for deployment. This process was iterative and required us to adapt our Docker containers to ensure compatibility across environments.
+> Another major challenge was identifying the right VM configuration for training and preprocessing tasks. Due to quota limitations on our trial account, we had to test different regions and machine types to find a setup that met our resource requirements and was available for deployment. This process was iterative and required us to adapt our Docker containers to ensure compatibility across environments.
 
-We also spent a significant amount of time developing and containerizing both the backend and frontend components. The backend, built using FastAPI, handled prediction requests, model loading, and logging. The frontend, created with Streamlit, needed to be intuitive and responsive, while integrating smoothly with the backend API. Deploying these to Cloud Run involved learning how to write efficient Dockerfiles, manage environment variables, and troubleshoot deployment errors.
+> We also spent a significant amount of time developing and containerizing both the backend and frontend components. The backend, built using FastAPI, handled prediction requests, model loading, and logging. The frontend, created with Streamlit, needed to be intuitive and responsive, while integrating smoothly with the backend API. Deploying these to Cloud Run involved learning how to write efficient Dockerfiles, manage environment variables, and troubleshoot deployment errors.
 
-Integrating the frontend and backend presented additional challenges, such as CORS issues, asynchronous request handling, and ensuring real-time responsiveness. Debugging these issues was difficult due to scattered documentation and platform-specific behavior.
+> Integrating the frontend and backend presented additional challenges, such as CORS issues, asynchronous request handling, and ensuring real-time responsiveness. Debugging these issues was difficult due to scattered documentation and platform-specific behavior.
 
-Overall, we spent the most time on creating and integrating the backend and frontend systems. We overcame these obstacles by dividing tasks, sharing knowledge, consulting forums, and iteratively testing each module. This hands-on experience significantly improved our understanding of deploying full-stack machine learning systems on the cloud.
+> Overall, we spent the most time on creating and integrating the backend and frontend systems. We overcame these obstacles by dividing tasks, sharing knowledge, consulting forums, and iteratively testing each module. This hands-on experience significantly improved our understanding of deploying full-stack machine learning systems on the cloud.
 
 ### Question 31
 
@@ -581,14 +491,6 @@ Overall, we spent the most time on creating and integrating the backend and fron
 > **make sure all members contributed actively to the project. Additionally, state if/how you have used generative AI**
 > **tools in your project.**
 >
-> Recommended answer length: 50-300 words.
->
-> Example:
-> *Student sXXXXXX was in charge of developing of setting up the initial cookie cutter project and developing of the*
-> *docker containers for training our applications.*
-> *Student sXXXXXX was in charge of training our models in the cloud and deploying them afterwards.*
-> *All members contributed to code by...*
-> *We have used ChatGPT to help debug our code. Additionally, we used GitHub Copilot to help write some of our code.*
 > Answer:
 > Ali Najibpour Nashi:
 >Ali developed the training and preprocessing scripts and located the required datasets. He ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
