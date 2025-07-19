@@ -168,46 +168,45 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > *because we did not use any ... in our project. We have added an ... folder that contains ... for running our*
 > *experiments.*
 >
-> Answer:
-> 
+> Answer: Project structure
+>```
 > mlopspj/
-├── .dvc/                        <- DVC cache and metadata
-├── .dvcignore                   <- Ignore patterns for DVC tracking
-├── .gitignore                   <- Ignore rules for Git
-├── .python-version             <- Python version pin (3.12)
-├── .ruff_cache/                <- Ruff linter/cache directory
-├── backend_requirements.txt    <- Backend dependencies
-├── frontend_requirements.txt   <- Frontend dependencies
-├── preprocess_requirements.txt <- Preprocessing dependencies
-├── train_requirements.txt      <- Training dependencies
-├── pyproject.toml              <- Project configuration (likely Poetry)
-├── LICENSE                     <- Open-source license
-├── README.md                   <- Main project README
-├── README copy.md              <- Possibly a backup or alt version
-
-├── configs/                    <- Configuration files for modules or pipelines
-
-├── data/                       <- Versioned data folder (tracked with DVC)
-│   ├── .gitignore              <- Ignore file inside data/
-│   ├── flower_labels.csv.dvc   <- DVC-tracked label data
-│   ├── labels.csv.dvc          <- DVC-tracked label CSV
-│   └── raw_images.dvc          <- DVC-tracked raw images
-
-├── dockerfiles/                <- Dockerfiles for each module
-│   ├── backend.dockerfile
-│   ├── frontend.dockerfile
-│   ├── preprocess.dockerfile
-│   └── train.dockerfile
-
-├── src/
-│   └── flowerclassif/          <- Core source code module
-│       ├── __init__.py         <- Makes it a Python package
-│       ├── __pycache__/        <- Compiled Python files
-│       ├── backend.py          <- Backend application logic
-│       ├── frontend.py         <- Frontend logic and interface
-│       ├── preprocess.py       <- Data preprocessing script
-│       └── train.py            <- Training script
-
+    ├── .dvc/                        <- DVC cache and metadata
+    ├── .dvcignore                   <- Ignore patterns for DVC tracking
+    ├── .gitignore                   <- Ignore rules for Git
+    ├── .python-version             <- Python version pin (3.12)
+    ├── .ruff_cache/                <- Ruff linter/cache directory
+    ├── backend_requirements.txt    <- Backend dependencies
+    ├── frontend_requirements.txt   <- Frontend dependencies
+    ├── preprocess_requirements.txt <- Preprocessing dependencies
+    ├── train_requirements.txt      <- Training dependencies
+    ├── pyproject.toml              <- Project configuration (likely Poetry)
+    ├── LICENSE                     <- Open-source license
+    ├── README.md                   <- Main project README
+    ├── README copy.md              <- Possibly a backup or alt version
+    
+    ├── configs/                    <- Configuration files for modules or pipelines
+    
+    ├── data/                       <- Versioned data folder (tracked with DVC)
+    │   ├── .gitignore              <- Ignore file inside data/
+    │   ├── flower_labels.csv.dvc   <- DVC-tracked label data
+    │   ├── labels.csv.dvc          <- DVC-tracked label CSV
+    │   └── raw_images.dvc          <- DVC-tracked raw images
+    
+    ├── dockerfiles/                <- Dockerfiles for each module
+    │   ├── backend.dockerfile
+    │   ├── frontend.dockerfile
+    │   ├── preprocess.dockerfile
+    │   └── train.dockerfile
+    
+    ├── src/
+    │   └── flowerclassif/          <- Core source code module
+    │       ├── __init__.py         <- Makes it a Python package
+    │       ├── __pycache__/        <- Compiled Python files
+    │       ├── backend.py          <- Backend application logic
+    │       ├── frontend.py         <- Frontend logic and interface
+    │       ├── preprocess.py       <- Data preprocessing script
+    │       └── train.py            <- Training script
 
 ### Question 6
 
