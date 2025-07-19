@@ -353,7 +353,7 @@ docker run --rm train_docker
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-> [gbucket](figures/gbucket.jpg)
+![gbucket](figures/gbucket.jpg)
 
 ### Question 20
 
@@ -361,7 +361,7 @@ docker run --rm train_docker
 > **stored. You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
-> [artifact_repo](artifact_repo/gbucket.jpg)
+![artifact_repo](artifact_repo/gbucket.jpg)
 
 ### Question 21
 
@@ -401,7 +401,7 @@ docker run --rm train_docker
 
 > Both containers are deployed independently on Google Cloud Run, enabling scalable, serverless hosting. This separation ensures modularity, easier maintenance, and the ability to scale each component independently.
 
-> # Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
+> Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
 
 ### Question 25
 
