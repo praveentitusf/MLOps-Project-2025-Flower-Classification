@@ -60,8 +60,9 @@ mlopspj/
     ├── train_requirements.txt      <- Training dependencies
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
-    ├── README.md                   <- Main project README
-   
+    ├── README.md                   <- Main project README (with Exam questions)
+    ├── project_description.md      <- Detailed description about the project
+
     ├── configs/                    <- Configuration files for modules or pipelines
     
     ├── data/                       <- Versioned data folder (tracked with DVC)
