@@ -18,7 +18,7 @@ readme = "README.md"
 
 # Core dependencies
 dependencies = [
-    "torch==2.2.2+cpu",
+    "torch==2.7.1+cpu",
     "torchvision==0.17.2+cpu",
     "numpy==1.26.4",
     "pytorch-lightning==2.2.4",
@@ -40,7 +40,7 @@ preprocess = [
 
 # Optional group for training
 training = [
-    "torch==2.2.2+cpu",
+    "torch==2.7.1+cpu",
     "torchvision==0.17.2+cpu",
     "numpy==1.26.4",
     "pytorch-lightning==2.2.4",
@@ -53,7 +53,7 @@ training = [
 backend = [
     "fastapi",
     "uvicorn[standard]",
-    "torch==2.2.2+cpu",
+    "torch==2.7.1+cpu",
     "torchvision==0.17.2+cpu",
     "pillow",
     "fsspec",
