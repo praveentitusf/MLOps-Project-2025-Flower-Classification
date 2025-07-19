@@ -273,9 +273,9 @@ mlopspj/
 > **important.**
 >
 > Answer:
-![wandb_runs1](figures/wandb_runs1.jpg)
+> ![wandb_runs1](figures/wandb_runs1.jpg)
 
-![wandb_runs2](figures/wandb_runs2.jpg)
+> ![wandb_runs2](figures/wandb_runs2.jpg)
 >
 > We conducted two training runs of a ResNet18 model and tracked the results using Weights & Biases (W&B) for better experiment management and comparison. Both runs are marked as finished and include key metrics such as training/validation loss, accuracy, and training steps. In the first run, we achieved a validation accuracy of 95.91% and a validation loss of 0.3036. In the second run, we reached a validation accuracy of 95.66% with a validation loss of 0.3147. Both models were trained for 4 epochs across 224 global steps. We observed a steady decrease in training loss and a rise in accuracy, indicating effective learning and good generalization. These metrics are crucial for evaluating model performance and diagnosing potential overfitting or underfitting. By using W&B, we can easily compare runs, visualize trends, and ensure reproducibility in our MLOps pipeline, helping us make informed decisions when tuning or deploying models.
 
@@ -285,10 +285,10 @@ mlopspj/
 > **Docker is an important tool for creating containerized applications. Explain how you used docker in your**
 > **experiments/project? Include how you would run your docker images and include a link to one of your docker files.**
 >
-> Answer: Docker played a crucial role in our MLOps pipeline by enabling reproducible and isolated environments for different stages of the workflow. We created separate >Docker images for preprocessing data, training the model, running the backend API, and serving the frontend UI:
+> Answer: Docker played a crucial role in our MLOps pipeline by enabling reproducible and isolated environments for different stages of the workflow. We created separate Docker images for preprocessing data, training the model, running the backend API, and serving the frontend UI:
 
 > train_docker: Trains the ResNet18 model using the preprocessed data.
-> https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/preprocess.dockerfile
+> Training Dockerfile: [train.dockerfile](https://github.com/praveentitusf/MLOps-Project-2025-Flower-Classification/blob/main/dockerfiles/train.dockerfile)
 
 > By containerizing each component, we ensured consistency across development and deployment environments.
 
@@ -354,7 +354,7 @@ docker run --rm train_docker
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-`![gbucket](figures/gbucket.jpg)`
+![gbucket](figures/gbucket.jpg_)
 
 ### Question 20
 
@@ -362,7 +362,7 @@ docker run --rm train_docker
 > **stored. You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
-`![artifact_repo](artifact_repo/gbucket.jpg)`
+![artifact_repo](figures/artifact_repo.jpg)
 
 ### Question 21
 
