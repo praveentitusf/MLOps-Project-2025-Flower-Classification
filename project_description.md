@@ -3,6 +3,8 @@
 ## Project Description  
 This project implements a complete MLOps pipeline for classifying 102 categories of flowers using deep learning techniques. The model is built using PyTorch Lightning and is trained on the **Oxford 102 Flower Dataset**, which contains a diverse set of flower species with variations in lighting, pose, and background. The pipeline integrates key MLOps tools for experiment tracking, data versioning, model deployment, and monitoring.
 
+### Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
+
 ## Objective  
 Our primary objective is to develop a robust and reproducible deep learning pipeline that can accurately classify flower species from raw images. The project covers the full ML lifecycle, including data preprocessing, model training, evaluation and deployment.
 
