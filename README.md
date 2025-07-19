@@ -144,14 +144,14 @@ will check the repositories and the code to verify your answers.
 >
 > Answer:We used a virtual environment to isolate the project's dependencies from the system-wide Python packages, ensuring a clean and conflict-free setup. To manage dependencies across different stages of the project, we maintained separate requirement files: preprocess_requirements.txt, train_requirements.txt, backend_requirements.txt, and frontend_requirements.txt. These files allow new team members to easily install the necessary packages for each component.
 
->Additionally, we created Dockerfiles to containerize the application, ensuring consistent environments across development, testing, and deployment. Instead of manually installing dependencies, users can simply build and run the Docker containers, which encapsulate all setup steps for each module.
+> Additionally, we created Dockerfiles to containerize the application, ensuring consistent environments across development, testing, and deployment. Instead of manually installing dependencies, users can simply build and run the Docker containers, which encapsulate all setup steps for each module.
 
 ### Question 5
 
 > **We expect that you initialized your project using the cookiecutter template. Explain the overall structure of your**
 > **code. What did you fill out? Did you deviate from the template in some way?**
 >
-> Answer: Project structure: used Cookie-cutter template, and kept only the relevant folder.
+> Answer: Project structure: used Cookie-cutter template, and kept only the relevant folders.
 ```
 mlopspj/
     ├── .dvc/                        <- DVC cache and metadata
@@ -369,9 +369,9 @@ docker run --rm train_docker
 > **Upload 1-2 images of your GCP cloud build history, so we can see the history of the images that have been build in**
 > **your project. You can take inspiration from [this figure](figures/build.png).**
 >
-> Answer: In this project, instead of using an automated Cloud Build pipeline on Google Cloud Platform (GCP), we manually uploaded the built container images to the container registry. This means that the images were built in our development environment and then pushed directly to GCP’s Container Registry without triggering automated build history or build logs within the Cloud Build service.
+> Answer: In this project, instead of using an automated Cloud Build pipeline on Google Cloud Platform (GCP), we manually uploaded the built container images to the Artifact registry. This means that the images were built in our development environment and then pushed directly to GCP’s Artifact Registry without triggering automated build history or build logs within the Cloud Build service.
 
-> As a result, there is no automated Cloud Build history available to display. However, the container images are still available and can be verified in the Container Registry, showing the uploaded image versions and tags.
+> As a result, there is no automated Cloud Build history available to display. However, the container images are still available and can be verified in the Artifact Registry, showing the uploaded image versions and tags.
 
 ### Question 22
 
@@ -445,9 +445,7 @@ docker run --rm train_docker
 ```
 > Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
 
-> The pay-as-you-go model kept costs manageable, especially since we were able to use free tier services for some components. However, Compute Engine was the most expensive part of our setup due to its heavy use during model training.
-
-> Overall, the cloud made development faster, deployment smoother, and team collaboration easier. For future projects, we’d aim to optimize usage further and explore cost-saving features like sustained use discounts or committed use contracts.
+> The pay-as-you-go model kept costs manageable, especially since we were able to use free tier services for some components. However, Compute Engine was the most expensive part of our setup due to its heavy use during model training.Overall, the cloud made development faster, deployment smoother, and team collaboration easier.
 
 ### Question 28
 
@@ -462,10 +460,11 @@ docker run --rm train_docker
 > **Include a figure that describes the overall architecture of your system and what services that you make use of.**
 > **You can take inspiration from [this figure](figures/overview.png). Additionally, in your own words, explain the**
 > **overall steps in figure.**
->
+> 
+> Answer:
 > ![workflow](figures/workflow.jpg)
 > 
-> Answer: The starting point of our system is the local development environment, where we build Docker images for both the model training pipeline and the application deployment pipeline. For the training pipeline, we create Docker containers that include preprocessing and model training scripts. Similarly, for deployment, we build Docker images containing the backend service (implemented using FastAPI) and the frontend interface (using Streamlit).
+> The starting point of our system is the local development environment, where we build Docker images for both the model training pipeline and the application deployment pipeline. For the training pipeline, we create Docker containers that include preprocessing and model training scripts. Similarly, for deployment, we build Docker images containing the backend service (implemented using FastAPI) and the frontend interface (using Streamlit).
 
 > Once the Docker images are built locally, they are pushed to the Google Artifact Registry, which acts as a centralized repository for container images, enabling easy version control and deployment. The training pipeline images are then deployed to a Google Cloud Compute Engine (GCE) virtual machine, where the preprocessing and model training steps are executed. After the model is trained, the resulting model artifacts are saved to Google Cloud Storage, providing persistent and scalable storage.
 
@@ -484,9 +483,9 @@ docker run --rm train_docker
 
 > We also spent a significant amount of time developing and containerizing both the backend and frontend components. The backend, built using FastAPI, handled prediction requests, model loading, and logging. The frontend, created with Streamlit, needed to be intuitive and responsive, while integrating smoothly with the backend API. Deploying these to Cloud Run involved learning how to write efficient Dockerfiles, manage environment variables, and troubleshoot deployment errors.
 
-> Integrating the frontend and backend presented additional challenges, such as CORS issues, asynchronous request handling, and ensuring real-time responsiveness. Debugging these issues was difficult due to scattered documentation and platform-specific behavior.
+> Integrating the frontend and backend presented additional challenges, such as asynchronous request handling and ensuring real-time responsiveness. 
 
-> Overall, we spent the most time on creating and integrating the backend and frontend systems. We overcame these obstacles by dividing tasks, sharing knowledge, consulting forums, and iteratively testing each module. This hands-on experience significantly improved our understanding of deploying full-stack machine learning systems on the cloud.
+> Overall, we spent the most time on creating and integrating the backend and frontend systems. We overcame these obstacles by dividing tasks, sharing knowledge, consulting forums. This hands-on experience significantly improved our understanding of deploying full-stack machine learning systems on the cloud.
 
 ### Question 31
 
@@ -496,10 +495,10 @@ docker run --rm train_docker
 >
 > Answer:
 > Ali Najibpour Nashi:
->Ali developed the training and preprocessing scripts and located the required datasets. He ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
+> Developed the training and preprocessing scripts and located the required datasets. He ensured the data was properly prepared for model training. His work laid the foundation for the entire machine learning pipeline.
 
 > Dileep Vemuri:
-Dileep set up and configured the cloud virtual machine, including installing Docker inside the VM. He managed service accounts and created cloud storage buckets to handle data securely. Additionally, he integrated Weights & Biases (WandB) for experiment tracking.
+> Set up and configured the cloud virtual machine, including installing Docker inside the VM. He managed service accounts and created cloud storage buckets to handle data securely. Additionally, he integrated Weights & Biases (WandB) for experiment tracking.
 
 > Praveen Titus Francis:
-Titus containerized the training, preprocessing, backend, and frontend components using Docker. He developed the backend and frontend services and deployed them on Google Cloud Run. His work enabled smooth deployment and access to the full application.
+> containerized the training, preprocessing, backend, and frontend components using Docker. He developed the backend and frontend services and deployed them on Google Cloud Run. His work enabled smooth deployment and access to the full application.
