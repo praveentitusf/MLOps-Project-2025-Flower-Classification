@@ -38,7 +38,7 @@ We tracked the following key metrics using W&B:
 
 These metrics are essential for monitoring training progress, detecting overfitting, and optimizing model performance.
 
-## Deployment and Automation  
+## Deployment 
 - **FastAPI** is used for building a RESTful inference API  
 - **Streamlit** provides an interactive user interface to visualize and test predictions  
 - **Docker** ensures reproducible builds and consistent environments  
