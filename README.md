@@ -164,7 +164,7 @@ mlopspj/
     ├── train_requirements.txt      <- Training dependencies
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
-    ├── README.md        <- Main project README
+    ├── README.md                   <- Main project README
    
     ├── configs/                    <- Configuration files for modules or pipelines
     
@@ -353,7 +353,7 @@ docker run --rm train_docker
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-![gbucket](figures/gbucket.jpg)
+`![gbucket](figures/gbucket.jpg)`
 
 ### Question 20
 
@@ -361,7 +361,7 @@ docker run --rm train_docker
 > **stored. You can take inspiration from [this figure](figures/registry.png).**
 >
 > Answer:
-![artifact_repo](artifact_repo/gbucket.jpg)
+`![artifact_repo](artifact_repo/gbucket.jpg)`
 
 ### Question 21
 
