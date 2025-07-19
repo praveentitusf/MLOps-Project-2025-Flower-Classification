@@ -158,14 +158,13 @@ mlopspj/
     ├── .dvcignore                   <- Ignore patterns for DVC tracking
     ├── .gitignore                   <- Ignore rules for Git
     ├── .python-version             <- Python version pin (3.12)
-    ├── .ruff_cache/                <- Ruff linter/cache directory
     ├── backend_requirements.txt    <- Backend dependencies
     ├── frontend_requirements.txt   <- Frontend dependencies
     ├── preprocess_requirements.txt <- Preprocessing dependencies
     ├── train_requirements.txt      <- Training dependencies
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
-    ├── EXAM REPORT README.md        <- Main project README
+    ├── README.md        <- Main project README
    
     ├── configs/                    <- Configuration files for modules or pipelines
     
@@ -274,8 +273,8 @@ mlopspj/
 > **important.**
 >
 > Answer:
-> ![wandb_runs1](figures/wandb_runs.jpg)
-> ![wandb_runs2](figures/wandb_runs.jpg)
+`![wandb_runs1](figures/wandb_runs.jpg)`
+`![wandb_runs2](figures/wandb_runs.jpg)`
 >
 > We conducted two training runs of a ResNet18 model and tracked the results using Weights & Biases (W&B) for better experiment management and comparison. Both runs are marked as finished and include key metrics such as training/validation loss, accuracy, and training steps. In the first run, we achieved a validation accuracy of 95.91% and a validation loss of 0.3036. In the second run, we reached a validation accuracy of 95.66% with a validation loss of 0.3147. Both models were trained for 4 epochs across 224 global steps. We observed a steady decrease in training loss and a rise in accuracy, indicating effective learning and good generalization. These metrics are crucial for evaluating model performance and diagnosing potential overfitting or underfitting. By using W&B, we can easily compare runs, visualize trends, and ensure reproducibility in our MLOps pipeline, helping us make informed decisions when tuning or deploying models.
 
