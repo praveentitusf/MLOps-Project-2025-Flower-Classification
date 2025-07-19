@@ -463,7 +463,7 @@ docker run --rm train_docker
 > **You can take inspiration from [this figure](figures/overview.png). Additionally, in your own words, explain the**
 > **overall steps in figure.**
 >
-> [workflow](figures/workflow.jpg)
+> ![workflow](figures/workflow.jpg)
 > 
 > Answer: The starting point of our system is the local development environment, where we build Docker images for both the model training pipeline and the application deployment pipeline. For the training pipeline, we create Docker containers that include preprocessing and model training scripts. Similarly, for deployment, we build Docker images containing the backend service (implemented using FastAPI) and the frontend interface (using Streamlit).
 
