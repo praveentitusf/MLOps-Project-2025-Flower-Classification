@@ -119,8 +119,11 @@ will check the repositories and the code to verify your answers.
 ### Question 2
 > **Enter the study number for each member in the group**
 >
-> Answer: Praveen Titus Francis : 12837557
+> Answer:
+> Praveen Titus Francis : 12837557
+> 
 > Dileep Vemuri : 12818965
+> 
 > Ali Najibpour Nashi : 12644070
 
 ### Question 3
@@ -162,7 +165,7 @@ mlopspj/
     ├── train_requirements.txt      <- Training dependencies
     ├── pyproject.toml              <- Project configuration (likely Poetry)
     ├── LICENSE                     <- Open-source license
-    ├── README.md                   <- Main project README
+    ├── EXAM REPORT README.md        <- Main project README
    
     ├── configs/                    <- Configuration files for modules or pipelines
     
@@ -399,7 +402,7 @@ docker run --rm train_docker
 
 > Both containers are deployed independently on Google Cloud Run, enabling scalable, serverless hosting. This separation ensures modularity, easier maintenance, and the ability to scale each component independently.
 
-> ## Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
+> # Link to the deployed app: https://frontend-660622539098.europe-west1.run.app/
 
 ### Question 25
 
@@ -438,7 +441,7 @@ docker run --rm train_docker
 | VM Manager          | €0.10    |
 | Artifact Registry   | €0.01    |
 | Cloud Run Functions | €0.00    |
-| **Total**           | **€12.46** |
+| **Total**           | €12.46    |
 ```
 > Working in the cloud was a valuable learning experience. It allowed us to quickly deploy, test, and scale different components of our application without worrying about managing physical infrastructure. Services like Compute Engine and Cloud Run gave us flexibility in how we handled training, inference, and deployment.
 
