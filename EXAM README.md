@@ -169,7 +169,8 @@ Additionally, we created Dockerfiles to containerize the application, ensuring c
 > *experiments.*
 >
 > Answer: Project structure
-> ```mlopspj/
+> ```
+    mlopspj/
     ├── .dvc/                        <- DVC cache and metadata
     ├── .dvcignore                   <- Ignore patterns for DVC tracking
     ├── .gitignore                   <- Ignore rules for Git
