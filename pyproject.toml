@@ -9,7 +9,7 @@ description = "102 Category Flower Classification using ResNet18 and PyTorch Lig
 authors = [
     { name = "Praveen Titus Francis" },
     { name = "Dileep Vemuri" }
-    { name = "Ali" }
+    
     
 ]
 license = { text = "MIT" }
